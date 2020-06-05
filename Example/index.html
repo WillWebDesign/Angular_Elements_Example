@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>InputWebComponent</title>
+  <base href="/">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1">
+  <link rel="icon"
+        type="image/x-icon"
+        href="favicon.ico">
+</head>
+
+<body>
+  <ui-input id="test"
+            name="Nombre"
+            placeholder="Pedrito"></ui-input>
+
+  <script>
+    var inputRef = document.getElementById('test');
+    inputRef.addEventListener('changeValue', function(e) {
+      console.log(e.detail)
+    })
+  </script>
+
+  <script src="built-files/runtime-es2015.js"
+          type="module"></script>
+  <script src="built-files/runtime-es5.js"
+          nomodule
+          defer></script>
+  <script src="built-files/polyfills-es5.js"
+          nomodule
+          defer></script>
+  <script src="built-files/polyfills-es2015.js"
+          type="module"></script>
+  <script src="built-files/styles-es2015.js"
+          type="module"></script>
+  <script src="built-files/styles-es5.js"
+          nomodule
+          defer></script>
+  <script src="built-files/scripts.js"
+          defer></script>
+  <script src="built-files/vendor-es2015.js"
+          type="module"></script>
+  <script src="built-files/vendor-es5.js"
+          nomodule
+          defer></script>
+  <script src="built-files/main-es2015.js"
+          type="module"></script>
+  <script src="built-files/main-es5.js"
+          nomodule
+          defer></script>
+</body>
+
+</html>

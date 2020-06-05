@@ -2,5 +2,133 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
-  "projects": {}
+  "projects": {
+    "InputWebComponent": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/InputWebComponent",
+      "sourceRoot": "projects/InputWebComponent/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/InputWebComponent",
+            "index": "projects/InputWebComponent/src/index.html",
+            "main": "projects/InputWebComponent/src/main.ts",
+            "polyfills": "projects/InputWebComponent/src/polyfills.ts",
+            "tsConfig": "projects/InputWebComponent/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "projects/InputWebComponent/src/favicon.ico",
+              "projects/InputWebComponent/src/assets"
+            ],
+            "styles": [
+              "projects/InputWebComponent/src/styles.scss"
+            ],
+            "scripts": [
+              {
+                "input": "node_modules/document-register-element/build/document-register-element.js"
+              }
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/InputWebComponent/src/environments/environment.ts",
+                  "with": "projects/InputWebComponent/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "InputWebComponent:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "InputWebComponent:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "InputWebComponent:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/InputWebComponent/src/test.ts",
+            "polyfills": "projects/InputWebComponent/src/polyfills.ts",
+            "tsConfig": "projects/InputWebComponent/tsconfig.spec.json",
+            "karmaConfig": "projects/InputWebComponent/karma.conf.js",
+            "assets": [
+              "projects/InputWebComponent/src/favicon.ico",
+              "projects/InputWebComponent/src/assets"
+            ],
+            "styles": [
+              "projects/InputWebComponent/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/InputWebComponent/tsconfig.app.json",
+              "projects/InputWebComponent/tsconfig.spec.json",
+              "projects/InputWebComponent/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/InputWebComponent/e2e/protractor.conf.js",
+            "devServerTarget": "InputWebComponent:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "InputWebComponent:serve:production"
+            }
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "InputWebComponent"
 }
